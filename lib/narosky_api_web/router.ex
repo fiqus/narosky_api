@@ -33,10 +33,15 @@ defmodule NaroskyApiWeb.Router do
       end
     end
 
-    pipe_through :api
+    scope "/api", NaroskyApiWeb do
+      pipe_through :api
 
-    forward "/api", Absinthe.Plug,
-      schema: NaroskyApiWeb.Schema
+      get "/species", SpecieController, :get_json
+      get "/quiz/:region", SpecieController, :quiz
+    end
+
+    # forward "/api", Absinthe.Plug,
+    #   schema: NaroskyApiWeb.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: NaroskyApiWeb.Schema,

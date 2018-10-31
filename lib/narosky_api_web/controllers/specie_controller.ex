@@ -9,6 +9,16 @@ defmodule NaroskyApiWeb.SpecieController do
     render(conn, "index.html", species: species)
   end
 
+  def get_json(conn, _params) do
+    species = Species.list_species()
+    render(conn, "index.json", species: species)
+  end
+
+  def quiz(conn, %{"region" => region}) do
+    quiz_options = Species.quizzes(region)
+    render(conn, "quiz_options.json", quiz_options: quiz_options)
+  end
+
   def new(conn, _params) do
     changeset = Species.change_specie(%Specie{})
     render(conn, "new.html", changeset: changeset)

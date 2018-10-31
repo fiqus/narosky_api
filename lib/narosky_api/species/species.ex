@@ -30,6 +30,24 @@ defmodule NaroskyApi.Species do
     Repo.all(Specie)
   end
 
+  def quizzes(region) do
+    Specie
+    |> where([s], ^region in s.regions)
+    |> order_by(fragment("RANDOM()"))
+    |> limit(10)
+    |> Repo.all()
+    |> Enum.map(fn specie ->
+      options =
+        Specie
+        |> where([s], ^specie.id != s.id and ^region in s.regions)
+        |> order_by(fragment("RANDOM()"))
+        |> limit(2)
+        |> Repo.all()
+
+        %{correct: specie, incorrects: options}
+    end)
+  end
+
   @doc """
   Gets a single specie.
 
