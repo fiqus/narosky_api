@@ -15,6 +15,7 @@ defmodule NaroskyApi.Species.Specie do
     field :regions, {:array, :string}
     field :status,    :string
     field :difficulty, :integer
+    field :song, :string
 
     timestamps()
   end
@@ -22,7 +23,7 @@ defmodule NaroskyApi.Species.Specie do
   @doc false
   def changeset(specie, attrs) do
     specie
-    |> cast(attrs, [:name_es, :name_en, :name_pt, :sci_name, :picture, :active, :regions, :status, :difficulty])
+    |> cast(attrs, [:name_es, :name_en, :name_pt, :sci_name, :picture, :active, :regions, :status, :difficulty, :song])
     |> validate_required([:name_es, :name_en, :name_pt, :sci_name, :picture, :active])
   end
 end

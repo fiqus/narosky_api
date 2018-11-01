@@ -40,6 +40,11 @@
   </li>
 
   <li>
+    <strong>Song:</strong>
+    <a href="<%= @specie.song %>"><%= @specie.song %></a>
+  </li>
+
+  <li>
     <strong>Active:</strong>
     <%= @specie.active %>
   </li>

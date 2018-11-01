@@ -20,7 +20,8 @@ defmodule NaroskyApiWeb.SpecieView do
       picture: specie.picture,
       regions: specie.regions,
       status: specie.status,
-      difficulty: specie.difficulty
+      difficulty: specie.difficulty,
+      song: specie.song
     }
   end
 
