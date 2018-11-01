@@ -1,13 +1,15 @@
 # NaroskyApi
 
+The Fiqus bio species API :bird::herb: done with :heart: 
+
 ## Run with Docker
   * Change in `dev.exs` the database `hostname:` from localhost to `"postgres"`.
   * Create the docker image and power up the services: `docker-compose up -d --build`
   * If your DB table still does not exist: `docker-compose exec narosky_api mix ecto.create`
-  * And run the migrationst: `docker-compose exec narosky_api mix ecto.migrate`
+  * And run the migrations: `docker-compose exec narosky_api mix ecto.migrate`
   * Start the server! `docker-compose exec narosky_api mix phx.server`
 
-You might need run all with `sudo`.
+You might need to run all with `sudo` (depending your local configuration).
 
 ## Run with your local
 
@@ -33,7 +35,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ### GET /api/quiz/:region
 `http://localhost:4000/api/quiz/pampas`
 
-## GraphQL wip
+## GraphQL (experimental)
 Access to the client `http://localhost:4000/graphiql`.
 Query example:
 ```json
