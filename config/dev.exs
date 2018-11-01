@@ -43,5 +43,5 @@ config :narosky_api, NaroskyApi.Repo,
   username: "postgres",
   password: "postgres",
   database: "narosky_api",
-  hostname: "localhost",
+  hostname: "postgres",
   pool_size: 10

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  narosky_api:
+    container_name: "narosky_api"
+    build: .
+    depends_on:
+      - "postgres"
+    ports:
+    - "4000:4000"
+    volumes:
+    - .:/app
+    links:
+    - postgres
+  postgres:
+    image: postgres
+    ports:
+    - "5433:5432"
