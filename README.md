@@ -1,6 +1,6 @@
 # NaroskyApi
 
-The Fiqus bio species API :bird::herb: done with :heart: 
+The Fiqus bio species API :bird: :herb: done with :heart: 
 
 ## Run with Docker
   * Change in `dev.exs` the database `hostname:` from localhost to `"postgres"`.
