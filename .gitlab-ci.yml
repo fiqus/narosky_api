@@ -8,9 +8,9 @@ test:
   services:
     - postgres:latest
   variables:
-    POSTGRES_HOST: $PG_HOST
-    POSTGRES_USER: $PG_USER
-    POSTGRES_PASSWORD: $PG_PASSWORD
+    POSTGRES_HOST: postgres
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
     MIX_ENV: "test"
   script:
     - mix deps.get --only test
