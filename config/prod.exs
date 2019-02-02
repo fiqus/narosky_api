@@ -66,4 +66,4 @@ config :narosky_api, NaroskyApi.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: "${DATABASE_URL}",
   ssl: true,
-  pool_size: 1
+  pool_size: 2

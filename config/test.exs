@@ -15,5 +15,5 @@ config :narosky_api, NaroskyApi.Repo,
   username: "postgres",
   password: "postgres",
   database: "narosky_api_test",
-  hostname: "localhost",
+  hostname: System.get_env("POSTGRES_HOST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
