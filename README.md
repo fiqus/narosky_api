@@ -1,6 +1,7 @@
 # NaroskyApi
 
 The Fiqus bio species API :bird: :herb: done with :heart: 
+This app is focused to be an Open API for biological species and part of a quizzes game about birds.
 
 ## Run with Docker
   * Change in `dev.exs` the database `hostname:` from localhost to `"postgres"`.
