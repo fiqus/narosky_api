@@ -29,7 +29,8 @@ defmodule NaroskyApiWeb.SpecieController do
       {:ok, specie} ->
         conn
         |> put_flash(:info, "Specie created successfully.")
-        |> redirect(to: specie_path(conn, :show, specie))
+        |> redirect(to: Routes.specie_path(conn, :show, specie))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -53,7 +54,8 @@ defmodule NaroskyApiWeb.SpecieController do
       {:ok, specie} ->
         conn
         |> put_flash(:info, "Specie updated successfully.")
-        |> redirect(to: specie_path(conn, :show, specie))
+        |> redirect(to: Routes.specie_path(conn, :show, specie))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", specie: specie, changeset: changeset)
     end
@@ -65,6 +67,6 @@ defmodule NaroskyApiWeb.SpecieController do
 
     conn
     |> put_flash(:info, "Specie deleted successfully.")
-    |> redirect(to: specie_path(conn, :index))
+    |> redirect(to: Routes.specie_path(conn, :index))
   end
 end

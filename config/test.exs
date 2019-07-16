@@ -11,7 +11,6 @@ config :logger, level: :warn
 
 # Configure your database
 config :narosky_api, NaroskyApi.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "narosky_api_test",

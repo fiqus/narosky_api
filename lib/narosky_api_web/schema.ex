@@ -15,13 +15,13 @@ defmodule NaroskyApiWeb.Schema do
 
   query do
     field :species, non_null(list_of(non_null(:specie))) do
-      arg :matching, :string
-      resolve &SpeciesResolver.all_species/3
+      arg(:matching, :string)
+      resolve(&SpeciesResolver.all_species/3)
     end
 
     field :quiz, :quiz do
-      arg :matching, :string
-      resolve &QuizzesResolver.quiz/3
+      arg(:matching, :string)
+      resolve(&QuizzesResolver.quiz/3)
     end
   end
 end

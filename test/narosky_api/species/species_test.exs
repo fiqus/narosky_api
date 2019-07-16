@@ -6,9 +6,30 @@ defmodule NaroskyApi.SpeciesTest do
   describe "species" do
     alias NaroskyApi.Species.Specie
 
-    @valid_attrs %{active: true, name_en: "some name_en", name_es: "some name_es", name_pt: "some name_pt", picture: "some picture", sci_name: "some sci_name"}
-    @update_attrs %{active: false, name_en: "some updated name_en", name_es: "some updated name_es", name_pt: "some updated name_pt", picture: "some updated picture", sci_name: "some updated sci_name"}
-    @invalid_attrs %{active: nil, name_en: nil, name_es: nil, name_pt: nil, picture: nil, sci_name: nil}
+    @valid_attrs %{
+      active: true,
+      name_en: "some name_en",
+      name_es: "some name_es",
+      name_pt: "some name_pt",
+      picture: "some picture",
+      sci_name: "some sci_name"
+    }
+    @update_attrs %{
+      active: false,
+      name_en: "some updated name_en",
+      name_es: "some updated name_es",
+      name_pt: "some updated name_pt",
+      picture: "some updated picture",
+      sci_name: "some updated sci_name"
+    }
+    @invalid_attrs %{
+      active: nil,
+      name_en: nil,
+      name_es: nil,
+      name_pt: nil,
+      picture: nil,
+      sci_name: nil
+    }
 
     def specie_fixture(attrs \\ %{}) do
       {:ok, specie} =

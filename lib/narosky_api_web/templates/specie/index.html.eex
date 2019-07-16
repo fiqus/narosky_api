@@ -22,13 +22,13 @@
       <td><%= specie.active %></td>
 
       <td class="text-right">
-        <span><%= link "Show", to: specie_path(@conn, :show, specie), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: specie_path(@conn, :edit, specie), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: specie_path(@conn, :delete, specie), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        <span><%= link "Show", to: Routes.specie_path(@conn, :show, specie), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: Routes.specie_path(@conn, :edit, specie), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: Routes.specie_path(@conn, :delete, specie), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "Crear nueva", to: specie_path(@conn, :new) %></span>
+<span><%= link "Crear nueva", to: Routes.specie_path(@conn, :new) %></span>

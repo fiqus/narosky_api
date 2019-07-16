@@ -5,14 +5,21 @@ use Mix.Config
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
-# with brunch.io to recompile .js and .css sources.
+# with webpack to recompile .js and .css sources.
 config :narosky_api, NaroskyApiWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -39,7 +46,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :narosky_api, NaroskyApi.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "narosky_api",

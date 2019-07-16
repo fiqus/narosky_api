@@ -1,4 +1,5 @@
 defmodule NaroskyApi.Application do
+  @moduledoc false
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html
@@ -6,14 +7,14 @@ defmodule NaroskyApi.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    # Define workers and child supervisors to be supervised
+    # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(NaroskyApi.Repo, []),
+      NaroskyApi.Repo,
       # Start the endpoint when the application starts
-      supervisor(NaroskyApiWeb.Endpoint, []),
-      # Start your own worker by calling: NaroskyApi.Worker.start_link(arg1, arg2, arg3)
-      # worker(NaroskyApi.Worker, [arg1, arg2, arg3]),
+      NaroskyApiWeb.Endpoint
+      # Starts a worker by calling: NaroskyApiWeb.Worker.start_link(arg)
+      # {NaroskyApiWeb.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

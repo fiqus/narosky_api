@@ -19,13 +19,12 @@ defmodule NaroskyApiWeb.Router do
   end
 
   scope "/" do
-
     scope "/admin", NaroskyApiWeb do
       pipe_through :browser
 
       resources "/users", UserController, only: [:show, :new, :create]
-      resources "/sessions", SessionController, only: [:new, :create,
-                                                   :delete]
+      resources "/sessions", SessionController, only: [:new, :create, :delete]
+
       scope "/" do
         pipe_through :auth
 

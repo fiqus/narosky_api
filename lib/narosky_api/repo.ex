@@ -1,5 +1,6 @@
 defmodule NaroskyApi.Repo do
-  use Ecto.Repo, otp_app: :narosky_api
+  use Ecto.Repo, otp_app: :narosky_api,
+    adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the

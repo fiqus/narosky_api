@@ -1,5 +1,5 @@
-# App artifacts
-/_build
+# The directory Mix will write compiled artifacts to
+/_build/
 /db
 /deps
 /*.ez

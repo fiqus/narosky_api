@@ -24,8 +24,9 @@ defmodule NaroskyApi.Species do
   def list_species(%{matching: name}) when is_binary(name) do
     Specie
     |> where([m], ilike(m.name_es, ^"%#{name}%"))
-    |> Repo.all
+    |> Repo.all()
   end
+
   def list_species(_) do
     Repo.all(Specie)
   end
@@ -44,7 +45,7 @@ defmodule NaroskyApi.Species do
         |> limit(2)
         |> Repo.all()
 
-        %{correct: specie, incorrects: options}
+      %{correct: specie, incorrects: options}
     end)
   end
 

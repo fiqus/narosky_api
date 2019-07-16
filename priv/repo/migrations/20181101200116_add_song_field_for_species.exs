@@ -3,7 +3,7 @@ defmodule NaroskyApi.Repo.Migrations.AddSongFieldForSpecies do
 
   def change do
     alter table("species") do
-      add :song, :string
+      add(:song, :string)
     end
   end
 end

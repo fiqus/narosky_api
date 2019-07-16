@@ -2,7 +2,6 @@ defmodule NaroskyApi.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "users" do
     field :email, :string
     field :is_admin, :boolean, default: false
@@ -24,7 +23,7 @@ defmodule NaroskyApi.Accounts.User do
     user
     |> cast(attrs, [:name, :email, :password])
     |> validate_required([:name, :email, :password])
-    #|> validate_length(:username, min: 3, max: 10)
+    # |> validate_length(:username, min: 3, max: 10)
     |> validate_length(:password, min: 5, max: 10)
     |> unique_constraint(:email)
     |> put_password_hash()

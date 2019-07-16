@@ -1,14 +1,14 @@
-defmodule NaroskyApi.Mixfile do
+defmodule NaroskyApi.MixProject do
   use Mix.Project
 
   def project do
     [
       app: :narosky_api,
       version: "0.0.1",
-      elixir: "~> 1.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixir: "~> 1.5",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -26,20 +26,24 @@ defmodule NaroskyApi.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.2"},
+      {:phoenix, "~> 1.4"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
-      {:phoenix_html, "~> 2.10"},
+      {:ecto_sql, "~> 3.0"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_html, "~> 2.11"},
       {:postgrex, ">= 0.0.0"},
+      {:jason, "~> 1.0"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:plug_cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.7"},
       {:absinthe_plug, "~> 1.4.4"},
       {:absinthe_ecto, "~> 0.1.3"},
       {:guardian, "~> 1.0"},

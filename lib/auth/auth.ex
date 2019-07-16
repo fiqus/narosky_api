@@ -29,6 +29,7 @@ defmodule NaroskyApi.Auth do
         conn
         |> NaroskyApi.Auth.Guardian.Plug.sign_in(user)
         |> Plug.Conn.assign(:current_user, user)
+
       {:ok, conn}
     rescue
       error ->

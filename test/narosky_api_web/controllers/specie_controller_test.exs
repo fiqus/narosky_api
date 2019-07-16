@@ -3,9 +3,30 @@ defmodule NaroskyApiWeb.SpecieControllerTest do
 
   alias NaroskyApi.Species
 
-  @create_attrs %{active: true, name_en: "some name_en", name_es: "some name_es", name_pt: "some name_pt", picture: "some picture", sci_name: "some sci_name"}
-  @update_attrs %{active: false, name_en: "some updated name_en", name_es: "some updated name_es", name_pt: "some updated name_pt", picture: "some updated picture", sci_name: "some updated sci_name"}
-  @invalid_attrs %{active: nil, name_en: nil, name_es: nil, name_pt: nil, picture: nil, sci_name: nil}
+  @create_attrs %{
+    active: true,
+    name_en: "some name_en",
+    name_es: "some name_es",
+    name_pt: "some name_pt",
+    picture: "some picture",
+    sci_name: "some sci_name"
+  }
+  @update_attrs %{
+    active: false,
+    name_en: "some updated name_en",
+    name_es: "some updated name_es",
+    name_pt: "some updated name_pt",
+    picture: "some updated picture",
+    sci_name: "some updated sci_name"
+  }
+  @invalid_attrs %{
+    active: nil,
+    name_en: nil,
+    name_es: nil,
+    name_pt: nil,
+    picture: nil,
+    sci_name: nil
+  }
 
   def fixture(:specie) do
     {:ok, specie} = Species.create_specie(@create_attrs)
@@ -14,31 +35,31 @@ defmodule NaroskyApiWeb.SpecieControllerTest do
 
   describe "index" do
     test "lists all species", %{conn: conn} do
-      conn = get conn, specie_path(conn, :index)
+      conn = get(conn, Routes.specie_path(conn, :index))
       assert html_response(conn, 200) =~ "Listing Species"
     end
   end
 
   describe "new specie" do
     test "renders form", %{conn: conn} do
-      conn = get conn, specie_path(conn, :new)
+      conn = get(conn, Routes.specie_path(conn, :new))
       assert html_response(conn, 200) =~ "New Specie"
     end
   end
 
   describe "create specie" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post conn, specie_path(conn, :create), specie: @create_attrs
+      conn = post conn, Routes.specie_path(conn, :create), specie: @create_attrs
 
       assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == specie_path(conn, :show, id)
+      assert redirected_to(conn) == Routes.specie_path(conn, :show, id)
 
-      conn = get conn, specie_path(conn, :show, id)
+      conn = get(conn, Routes.specie_path(conn, :show, id))
       assert html_response(conn, 200) =~ "Show Specie"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post conn, specie_path(conn, :create), specie: @invalid_attrs
+      conn = post conn, Routes.specie_path(conn, :create), specie: @invalid_attrs
       assert html_response(conn, 200) =~ "New Specie"
     end
   end
@@ -47,7 +68,7 @@ defmodule NaroskyApiWeb.SpecieControllerTest do
     setup [:create_specie]
 
     test "renders form for editing chosen specie", %{conn: conn, specie: specie} do
-      conn = get conn, specie_path(conn, :edit, specie)
+      conn = get(conn, Routes.specie_path(conn, :edit, specie))
       assert html_response(conn, 200) =~ "Edit Specie"
     end
   end
@@ -56,15 +77,15 @@ defmodule NaroskyApiWeb.SpecieControllerTest do
     setup [:create_specie]
 
     test "redirects when data is valid", %{conn: conn, specie: specie} do
-      conn = put conn, specie_path(conn, :update, specie), specie: @update_attrs
-      assert redirected_to(conn) == specie_path(conn, :show, specie)
+      conn = put conn, Routes.specie_path(conn, :update, specie), specie: @update_attrs
+      assert redirected_to(conn) == Routes.specie_path(conn, :show, specie)
 
-      conn = get conn, specie_path(conn, :show, specie)
+      conn = get(conn, Routes.specie_path(conn, :show, specie))
       assert html_response(conn, 200) =~ "some updated name_en"
     end
 
     test "renders errors when data is invalid", %{conn: conn, specie: specie} do
-      conn = put conn, specie_path(conn, :update, specie), specie: @invalid_attrs
+      conn = put conn, Routes.specie_path(conn, :update, specie), specie: @invalid_attrs
       assert html_response(conn, 200) =~ "Edit Specie"
     end
   end
@@ -73,10 +94,11 @@ defmodule NaroskyApiWeb.SpecieControllerTest do
     setup [:create_specie]
 
     test "deletes chosen specie", %{conn: conn, specie: specie} do
-      conn = delete conn, specie_path(conn, :delete, specie)
-      assert redirected_to(conn) == specie_path(conn, :index)
+      conn = delete(conn, Routes.specie_path(conn, :delete, specie))
+      assert redirected_to(conn) == Routes.specie_path(conn, :index)
+
       assert_error_sent 404, fn ->
-        get conn, specie_path(conn, :show, specie)
+        get(conn, Routes.specie_path(conn, :show, specie))
       end
     end
   end
